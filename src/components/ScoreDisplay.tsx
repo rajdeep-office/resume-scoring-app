@@ -84,7 +84,7 @@ export const ScoreDisplay = ({
         {/* Score text */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span className={cn(
-            "font-bold transform rotate-90",
+            "font-bold",
             textSizeClasses[size],
             getScoreColor(score)
           )}>
