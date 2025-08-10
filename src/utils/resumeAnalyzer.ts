@@ -38,10 +38,10 @@ export class ResumeAnalyzer {
     const wordCount = words.length;
 
     // Calculate individual scores
-    const formattingScore = this.calculateFormattingScore(text);
-    const keywordScore = this.calculateKeywordScore(cleanText);
-    const grammarScore = this.calculateGrammarScore(text);
-    const readabilityScore = this.calculateReadabilityScore(words, text);
+    const formattingScore = Math.round(this.calculateFormattingScore(text));
+    const keywordScore = Math.round(this.calculateKeywordScore(cleanText));
+    const grammarScore = Math.round(this.calculateGrammarScore(text));
+    const readabilityScore = Math.round(this.calculateReadabilityScore(words, text));
 
     // Calculate overall score
     const overallScore = Math.round(
@@ -107,7 +107,7 @@ export class ResumeAnalyzer {
       score += 10;
     }
 
-    return Math.min(score, 100);
+    return Math.round(Math.min(score, 100));
   }
 
   private static calculateKeywordScore(text: string): number {
@@ -132,7 +132,7 @@ export class ResumeAnalyzer {
     if (softSkillKeywords.length > 0) score += 5;
     if (actionWords.length > 0) score += 10;
 
-    return Math.min(score, 100);
+    return Math.round(Math.min(score, 100));
   }
 
   private static calculateGrammarScore(text: string): number {
@@ -162,7 +162,7 @@ export class ResumeAnalyzer {
       score -= 5;
     }
 
-    return Math.max(score, 30);
+    return Math.round(Math.max(score, 30));
   }
 
   private static calculateReadabilityScore(words: string[], text: string): number {
@@ -190,7 +190,7 @@ export class ResumeAnalyzer {
     const hasTransitions = transitionWords.some(word => text.toLowerCase().includes(word));
     if (hasTransitions) score += 5;
 
-    return Math.min(score, 100);
+    return Math.round(Math.min(score, 100));
   }
 
   private static findMatchedKeywords(text: string): string[] {
