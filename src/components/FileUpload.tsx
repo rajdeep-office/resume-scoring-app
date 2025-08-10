@@ -76,10 +76,11 @@ export const FileUpload = ({ onFileProcessed, className }: FileUploadProps) => {
         <input
           type="file"
           id="resume-upload"
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-          accept=".pdf,.doc,.docx,.txt"
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+          accept=".pdf,.doc,.docx,.txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
           onChange={handleFileSelect}
           disabled={isProcessing}
+          multiple={false}
         />
         
         <div className="space-y-4">
